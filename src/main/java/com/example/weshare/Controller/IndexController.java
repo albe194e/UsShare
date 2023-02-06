@@ -35,9 +35,10 @@ public class IndexController {
     @GetMapping("/login")
     public String login(WebRequest req, HttpSession session){
 
-        User user = service.findUser(req);
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
 
-        Optional<User> foundUser = userRepo.findUserByUsernameAndPassword(user.getUsername(),user.getPassword());
+        Optional<User> foundUser = userRepo.findUserByUsernameAndPassword(username,password);
 
         if (foundUser.isPresent()){
             session.setAttribute("user", foundUser.get());
@@ -72,6 +73,12 @@ public class IndexController {
         user.setContribution(contribution);
 
         userRepo.save(user);
+
+        return "redirect:/";
+    }
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
 
         return "redirect:/";
     }

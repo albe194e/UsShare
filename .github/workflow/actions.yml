@@ -1,0 +1,13 @@
+name: Print Hello World
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Hello World
+        run: echo "Hello, World!"
+
+      - name: Print Hello World in Pink
+        run: echo -e "\033[35mHello, World!\033[0m"

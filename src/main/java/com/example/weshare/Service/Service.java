@@ -1,8 +1,10 @@
-package com.example.weshare;
+package com.example.weshare.Service;
 
+import com.example.weshare.Model.SharePool;
 import com.example.weshare.Model.User;
 import org.springframework.web.context.request.WebRequest;
 
+import java.awt.*;
 import java.util.Optional;
 
 public class Service {

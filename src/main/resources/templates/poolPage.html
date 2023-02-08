@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="main.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Pool page</title>
+</head>
+<body>
+
+<div class="box">
+
+    <p th:text="${session.sharePool.getPoolId()}"></p>
+    <br>
+    <p th:text="${session.sharePool.getTotalSum()}"></p>
+
+    <form action="/addContribution" method="post">
+
+        <button type="submit">Klick her</button>
+    </form>
+
+</div>
+
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="main.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title></title>
 </head>
@@ -23,6 +24,21 @@
 <form action="/logout">
     <button type="submit">Logout</button>
 </form>
+
+<form action="/createNewPool" method="post">
+    <button type="submit">Create new pool</button>
+</form>
+
+<div th:if="${session.user.getSharePool() != null}" class="box">
+    <p th:text="${session.sharePool.getPoolId()}"></p>
+
+    <form action="/poolPage" method="get">
+
+        <input style="display: none" type="text" name="poolId" th:value="${session.sharePool.getPoolId()}">
+
+        <button type="submit">Go to pool</button>
+    </form>
+</div>
 
 </body>
 </html>

@@ -1,12 +1,6 @@
 package com.example.weshare.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.*;
 
 @Entity
 public class SharePool {
@@ -14,16 +8,31 @@ public class SharePool {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int poolId;
+
+
+    @OneToOne(mappedBy = "sharePool")
+    private User user;
 
     private int totalSum;
 
-    public int getId() {
-        return id;
+    //getters and setters
+
+
+    public User getUser() {
+        return user;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getPoolId() {
+        return poolId;
+    }
+
+    public void setPoolId(int id) {
+        this.poolId = id;
     }
 
     public int getTotalSum() {

@@ -1,9 +1,6 @@
 package com.example.weshare.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class User {
@@ -13,16 +10,36 @@ public class User {
     private int id;
 
 
+
     private String username, password;
 
     private int contribution, toPay;
 
 
-    public User(String username, String password){
+
+
+    @OneToOne
+    @JoinColumn(name = "pool_id")
+    private SharePool sharePool;
+
+
+    public User(String username, String password, SharePool sharePool) {
+        this.username = username;
+        this.password = password;
+        this.sharePool = sharePool;
+    }
+    public User (String username, String password){
         this.username = username;
         this.password = password;
     }
 
+    public SharePool getSharePool() {
+        return sharePool;
+    }
+
+    public void setSharePool(SharePool sharePool) {
+        this.sharePool = sharePool;
+    }
 
     public int getContribution() {
         return contribution;
@@ -66,4 +83,5 @@ public class User {
 
 
     public User() {}
+
 }
